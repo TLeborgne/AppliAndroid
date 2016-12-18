@@ -32,13 +32,15 @@ public class MainActivity extends AppCompatActivity {
         DatePickerDialog.OnDateSetListener odsl= new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                tv_hw.setText(year+"/"+month+"/"+day);
+                tv_hw.setText(year+"/"+(month+1)+"/"+day);
             }
         };
         dpd = new DatePickerDialog(this, odsl, year, month, day);
     }
-
     public void button1Clicked(View v){
         Toast.makeText(getApplicationContext(),getString(R.string.msg),Toast.LENGTH_LONG).show();
+    }
+    public void textViewClicked(View v){
+        dpd.show();
     }
 }
