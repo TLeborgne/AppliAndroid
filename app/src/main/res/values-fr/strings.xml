@@ -4,5 +4,7 @@
     <string name="action_settings">Paramètres</string>
     <string name="button_text">Cliquez</string>
     <string name="hello_world">Bonjour Monde!</string>
+    <string name="menuToast">Toast Me</string>
     <string name="msg">Yay! Tu as cliqué!</string>
+    <string name="msgMenu">Pas mal comme menu hein?!</string>
 </resources>

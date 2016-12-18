@@ -3,5 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="button_text">Click</string>
     <string name="hello_world">Hello World!</string>
+    <string name="menuToast">Toast Me</string>
     <string name="msg">Yay! You clicked!</string>
+    <string name="msgMenu">Great Menu isn\'t it?</string>
 </resources>
