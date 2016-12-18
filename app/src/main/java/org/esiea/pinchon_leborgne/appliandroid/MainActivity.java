@@ -3,6 +3,8 @@ package org.esiea.pinchon_leborgne.appliandroid;
 import android.app.DatePickerDialog;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
@@ -50,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.toastMenu:
                 toastMenuClicked();
+                break;
+            case R.id.switchActivitiesMenu:
+                switchActivities();
+                break;
+            case R.id.geolocMenu:
+                mapMenuClicked();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -67,5 +76,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void toastMenuClicked(){
         Toast.makeText(getApplicationContext(),getString(R.string.msgMenu),Toast.LENGTH_LONG).show();
+    }
+    public void switchActivities(){
+        Intent myIntent = new Intent(this, SecondaryActivity.class);
+        startActivity(myIntent);
+    }
+    public void mapMenuClicked(){
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=Londres")));
     }
 }

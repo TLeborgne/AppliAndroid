@@ -5,6 +5,8 @@
     <string name="button_text">Cliquez</string>
     <string name="hello_world">Bonjour Monde!</string>
     <string name="menuToast">Toast Me</string>
+    <string name="menuSwitchActivities">Voir activité secondaire</string>
+    <string name="menuGeoloc">Voir Carte</string>
     <string name="msg">Yay! Tu as cliqué!</string>
     <string name="msgMenu">Pas mal comme menu hein?!</string>
 </resources>
