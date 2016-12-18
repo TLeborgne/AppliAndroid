@@ -2,13 +2,17 @@ package org.esiea.pinchon_leborgne.appliandroid;
 
 import android.app.DatePickerDialog;
 import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,17 +24,28 @@ import java.text.DateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String BIERS_UPDATE = "org.esiea.pinchon_leborgne.appliandroid.BIERS_UPDATE";
     TextView tv_hw;
     String now;
     DatePickerDialog dpd;
+    IntentFilter intentFilter;
     int year;
     int month;
     int day;
+    public class BierUpdate extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d("DEBUG-TAG", "Received");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        intentFilter = new IntentFilter(BIERS_UPDATE);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(), intentFilter);
         now= DateUtils.formatDateTime(getApplicationContext(),(new Date()).getTime(), DateFormat.FULL);
         tv_hw=(TextView) findViewById(R.id.tv_hello_world);
         tv_hw.setText(now);
@@ -41,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         dpd = new DatePickerDialog(this, odsl, year, month, day);
+        GetBiersServices.startActionBiers(this);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,3 +101,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=Londres")));
     }
 }
+
