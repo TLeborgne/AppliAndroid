@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CoursAndroid</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="button_text">Cliquez</string>
+    <string name="hello_world">Bonjour Monde!</string>
+    <string name="msg">Yay! Tu as cliqué!</string>
+</resources>
