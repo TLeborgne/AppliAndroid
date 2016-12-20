@@ -2,8 +2,8 @@
 <resources>
     <string name="app_name">CoursAndroid</string>
     <string name="action_settings">Paramètres</string>
-    <string name="button_text">Cliquez</string>
-    <string name="hello_world">Bonjour Monde!</string>
+    <string name="button_welcome">Voir les bières</string>
+    <string name="tv_welcome">Bienvenue dans votre liste de bière, aujourd\'hui, nous sommes le</string>
     <string name="menuToast">Toast Me</string>
     <string name="menuSwitchActivities">Voir activité secondaire</string>
     <string name="menuGeoloc">Voir Carte</string>

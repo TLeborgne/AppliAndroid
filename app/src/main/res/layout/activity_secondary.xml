@@ -10,4 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="org.esiea.pinchon_leborgne.appliandroid.SecondaryActivity">
 
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_bier"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/btn_welcome"
+        android:onClick="button1Clicked"
+        android:layout_alignParentBottom="true" />
+
 </RelativeLayout>

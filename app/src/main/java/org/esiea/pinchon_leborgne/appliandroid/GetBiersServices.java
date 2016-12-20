@@ -19,7 +19,7 @@ import static java.lang.System.in;
 
 public class GetBiersServices extends IntentService {
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
-    private static final String ACTION_GET_ALL_BIERS = "org.esiea.pinchon_leborgne.appliandroid.action.FOO";
+    private static final String ACTION_GET_ALL_BIERS = "org.esiea.pinchon_leborgne.appliandroid.action.GET_ALL_BIERS";
 
     public GetBiersServices() {
         super("GetBiersServices");
@@ -62,7 +62,7 @@ public class GetBiersServices extends IntentService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(MainActivity.BIERS_UPDATE));
+        LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(SecondaryActivity.BIERS_UPDATE));
     }
 
     private void copyInputStreamToFile(InputStream in, File file) {
