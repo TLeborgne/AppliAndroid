@@ -49,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         now= DateUtils.formatDateTime(getApplicationContext(),(new Date()).getTime(), DateFormat.FULL);
         tv_hw=(TextView) findViewById(R.id.tv_welcome);
-        tv_hw.setText(tv_hw.getText()+" "+now);
+        tv_hw.setText(tv_hw.getText()+" "+now+" "+getResources().getString(R.string.tv_welcome2));
         DatePickerDialog.OnDateSetListener odsl= new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                tv_hw.setText(year+"/"+(month+1)+"/"+day);
+                tv_hw.setText(getResources().getString(R.string.tv_welcome1)+" "+year+"/"+(month+1)+"/"+day+" "+getResources().getString(R.string.tv_welcome2));
             }
         };
         dpd = new DatePickerDialog(this, odsl, year, month, day);
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 toastMenuClicked();
                 break;
             case R.id.switchActivitiesMenu:
-                toastMenuClicked();
+                switchActivity();
                 break;
             case R.id.geolocMenu:
                 mapMenuClicked();
@@ -78,16 +78,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void button1Clicked(View v){
+    public void switchActivity(View view){
         Intent myIntent = new Intent(this, SecondaryActivity.class);
         startActivity(myIntent);
-        /*Toast.makeText(getApplicationContext(),getString(R.string.msg),Toast.LENGTH_LONG).show();
-        NotificationCompat.Builder maNotification= new NotificationCompat.Builder(this);
-        maNotification.setContentTitle("Hello World!");
-        maNotification.setContentText("Bonjour le monde!");
-        maNotification.setSmallIcon(R.mipmap.ic_launcher);
-        NotificationManager notifManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        notifManager.notify(1, maNotification.build());*/
+    }
+    public void switchActivity(){
+        Intent myIntent = new Intent(this, SecondaryActivity.class);
+        startActivity(myIntent);
     }
     public void textViewClicked(View v){
         dpd.show();
@@ -96,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),getString(R.string.msgMenu),Toast.LENGTH_LONG).show();
     }
     public void mapMenuClicked(){
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=Londres")));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=Ouy2ocDbFYs")));
     }
 }
 

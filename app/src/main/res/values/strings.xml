@@ -1,11 +1,10 @@
 <resources>
-    <string name="app_name">AndroidLesson</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Beer Browser</string>
     <string name="button_welcome">View beers</string>
-    <string name="tv_welcome">Welcome in your beer list, today is</string>
+    <string name="tv_welcome1">Welcome in your beer browser, today is</string>
+    <string name="tv_welcome2">(Press this message to change the date)</string>
     <string name="menuToast">Toast Me</string>
-    <string name="menuSwitchActivities">See secondary activity</string>
-    <string name="menuGeoloc">See Map</string>
-    <string name="msg">Yay! You clicked!</string>
-    <string name="msgMenu">Great Menu isn\'t it?</string>
+    <string name="menuSwitchActivities">Change activity</string>
+    <string name="menuGeoloc">Documentary about beers</string>
+    <string name="msgMenu">This button is useless</string>
 </resources>

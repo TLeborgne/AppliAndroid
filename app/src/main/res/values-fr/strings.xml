@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CoursAndroid</string>
-    <string name="action_settings">Paramètres</string>
+    <string name="app_name">Liste de bière</string>
     <string name="button_welcome">Voir les bières</string>
-    <string name="tv_welcome">Bienvenue dans votre liste de bière, aujourd\'hui, nous sommes le</string>
-    <string name="menuToast">Toast Me</string>
-    <string name="menuSwitchActivities">Voir activité secondaire</string>
-    <string name="menuGeoloc">Voir Carte</string>
-    <string name="msg">Yay! Tu as cliqué!</string>
-    <string name="msgMenu">Pas mal comme menu hein?!</string>
+    <string name="tv_welcome1">Bienvenue dans votre liste de bière, aujourd\'hui, nous sommes le</string>
+    <string name="tv_welcome2">(Appuyez sur ce mesage pour changer la date)</string>
+    <string name="menuToast">Toast Moi</string>
+    <string name="menuSwitchActivities">Changer activity</string>
+    <string name="menuGeoloc">Documentaire bières</string>
+    <string name="msgMenu">Ce bouton est inutile</string>
 </resources>

@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="@string/tv_welcome"
+        android:text="@string/tv_welcome1"
         android:id="@+id/tv_welcome"
         android:gravity="center"
         android:width="1dp"
@@ -20,6 +20,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_welcome"
         android:text="@string/button_welcome"
-        android:onClick="button1Clicked"/>
+        android:onClick="switchActivity"/>
 
 </LinearLayout>
