@@ -10,4 +10,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="org.esiea.pinchon_leborgne.appliandroid.SecondaryActivity">
 
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_bier"
+        android:layout_height="300dp"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/btn_welcome"
+        android:layout_alignParentTop="true" />
+
 </RelativeLayout>

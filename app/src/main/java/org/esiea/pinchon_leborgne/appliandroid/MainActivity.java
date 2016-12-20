@@ -36,113 +36,27 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String BIERS_UPDATE = "org.esiea.pinchon_leborgne.appliandroid.BIERS_UPDATE";
-    RecyclerView rv;
     TextView tv_hw;
     String now;
     DatePickerDialog dpd;
-    IntentFilter intentFilter;
     int year;
     int month;
     int day;
-    private class BiersAdapter extends RecyclerView.Adapter<BiersAdapter.BierHolder>{
-
-        private JSONArray biers;
-        public class BierHolder extends RecyclerView.ViewHolder{
-            public TextView name;
-            public BierHolder(View itemView) {
-                super(itemView);
-                name = (TextView) itemView.findViewById(R.id.rv_bier_element_name);
-            }
-        }
-
-        public BiersAdapter(JSONArray biers){
-            Log.d("DEBUG-Adapter", "BiersAdapter");
-            this.biers=biers;
-        }
-
-        @Override
-        public BierHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater li = LayoutInflater.from(parent.getContext());
-            View view = li.inflate(R.layout.rv_bier_element, parent, false);
-            BierHolder bh= new BierHolder(view);
-            return bh;
-        }
-
-        @Override
-        public void onBindViewHolder(BierHolder holder, int position) {
-            try{
-                JSONObject obj = biers.getJSONObject(position);
-                String name= obj.getString("name");
-                Log.d("DEBUG-Adapter", name);
-                holder.name.setText(name);
-            }catch(Exception e) {
-                e.fillInStackTrace();
-            }
-        }
-
-        @Override
-        public int getItemCount() {
-            Log.d("DEBUG-Adapter", "BiersLength:"+biers.length());
-            return biers.length();
-        }
-
-        public void setNewBier(JSONArray biers){
-            this.biers=biers;
-            notifyDataSetChanged();
-            Log.d("DEBUG-Adapter", this.biers.toString());
-        }
-    }
-    public class BierUpdate extends BroadcastReceiver{
-
-        public String loadJSON() {
-            String json = null;
-            try {
-                FileInputStream fis = new FileInputStream(new File(getCacheDir(), "bieres.json"));
-                int size = fis.available();
-                byte[] buffer = new byte[size];
-                fis.read(buffer);
-                fis.close();
-                json = new String(buffer, "UTF-8");
-                Log.d("t","loadJSON");
-            } catch (IOException ex) {
-                ex.printStackTrace();
-                return null;
-            }
-            return json;
-        }
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            try{
-                JSONArray jArray = new JSONArray(loadJSON());
-                ((BiersAdapter) rv.getAdapter()).setNewBier(jArray);
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         now= DateUtils.formatDateTime(getApplicationContext(),(new Date()).getTime(), DateFormat.FULL);
-        tv_hw=(TextView) findViewById(R.id.tv_hello_world);
-        tv_hw.setText(now);
+        tv_hw=(TextView) findViewById(R.id.tv_welcome);
+        tv_hw.setText(tv_hw.getText()+" "+now+" "+getResources().getString(R.string.tv_welcome2));
         DatePickerDialog.OnDateSetListener odsl= new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                tv_hw.setText(year+"/"+(month+1)+"/"+day);
+                tv_hw.setText(getResources().getString(R.string.tv_welcome1)+" "+year+"/"+(month+1)+"/"+day+" "+getResources().getString(R.string.tv_welcome2));
             }
         };
         dpd = new DatePickerDialog(this, odsl, year, month, day);
-        rv = (RecyclerView) findViewById(R.id.rv_bier);
-        rv.setAdapter(new BiersAdapter(new JSONArray()));
-        rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        intentFilter = new IntentFilter(BIERS_UPDATE);
-        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(), intentFilter);
-        GetBiersServices.startActionBiers(this);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -156,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 toastMenuClicked();
                 break;
             case R.id.switchActivitiesMenu:
-                switchActivities();
+                switchActivity();
                 break;
             case R.id.geolocMenu:
                 mapMenuClicked();
@@ -164,14 +78,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void button1Clicked(View v){
-        Toast.makeText(getApplicationContext(),getString(R.string.msg),Toast.LENGTH_LONG).show();
-        NotificationCompat.Builder maNotification= new NotificationCompat.Builder(this);
-        maNotification.setContentTitle("Hello World!");
-        maNotification.setContentText("Bonjour le monde!");
-        maNotification.setSmallIcon(R.mipmap.ic_launcher);
-        NotificationManager notifManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        notifManager.notify(1, maNotification.build());
+    public void switchActivity(View view){
+        Intent myIntent = new Intent(this, SecondaryActivity.class);
+        startActivity(myIntent);
+    }
+    public void switchActivity(){
+        Intent myIntent = new Intent(this, SecondaryActivity.class);
+        startActivity(myIntent);
     }
     public void textViewClicked(View v){
         dpd.show();
@@ -179,12 +92,8 @@ public class MainActivity extends AppCompatActivity {
     public void toastMenuClicked(){
         Toast.makeText(getApplicationContext(),getString(R.string.msgMenu),Toast.LENGTH_LONG).show();
     }
-    public void switchActivities(){
-        Intent myIntent = new Intent(this, SecondaryActivity.class);
-        startActivity(myIntent);
-    }
     public void mapMenuClicked(){
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=Londres")));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=Ouy2ocDbFYs")));
     }
 }
 
