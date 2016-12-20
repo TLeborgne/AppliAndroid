@@ -65,7 +65,7 @@ public class GetBiersServices extends IntentService {
         LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(MainActivity.BIERS_UPDATE));
     }
 
-    private void copyInputStreamToFile(InputStream inputStream, File file) {
+    private void copyInputStreamToFile(InputStream in, File file) {
         try {
             OutputStream out = new FileOutputStream(file);
             byte[] buf = new byte[1024];

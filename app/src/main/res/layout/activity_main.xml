@@ -28,4 +28,12 @@
         android:layout_toRightOf="@+id/tv_hello_world"
         android:layout_toEndOf="@+id/tv_hello_world"
         android:layout_marginTop="39dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_bier"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/btn_hello_world"
+        android:onClick="button1Clicked"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>
