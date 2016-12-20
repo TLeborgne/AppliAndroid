@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public TextView name;
             public BierHolder(View itemView) {
                 super(itemView);
+                name = (TextView) itemView.findViewById(R.id.rv_bier_element_name);
             }
         }
 
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             try{
                 JSONObject obj = biers.getJSONObject(position);
                 String name= obj.getString("name");
+                Log.d("DEBUG-Adapter", name);
                 holder.name.setText(name);
             }catch(Exception e) {
                 e.fillInStackTrace();
@@ -81,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
+            Log.d("DEBUG-Adapter", "BiersLength:"+biers.length());
             return biers.length();
         }
 
